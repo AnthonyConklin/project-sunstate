@@ -1,0 +1,36 @@
+version: '3.5'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: unless-stopped
+    volumes:
+      - ./src:/app/src
+      - ./test:/app/test
+      - sunstate-api-logs:/app/logs
+    environment:
+      - LOG_PATH=/app/logs
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+  postgres:
+    image: postgres:latest
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - sunstate-db:/data/postgres
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+volumes:
+  sunstate-db:
+    driver: local
+  sunstate-api-logs:
+    driver: local
