@@ -1,10 +1,39 @@
 # Sunstate Platform Coding Challenge
 
+## Setup Instructions
+
+Pull down repo:
+
+```bash
+git clone git@github.com:AnthonyConklin/project-sunstate.git
+```
+
+Navigate to project folder and init the docker containers.
+
+```
+cd project-sunstate && docker-compose up -d
+```
+
+Open up your browser and goto http://localhost:3000/api
+
+This will take you to the swagger api spec. A provided postman collection is also in the root folder. To import go into postman, Collections -> Import -> Choose File: "./project-sunstate/SunstateTemps.postman_collection.json"
+
+---
+
+## Specs
+
+- API - NestJS
+- Database - Postgres
+
+---
+
+## Project Brief
+
 Create a restful API that can do the following two tasks
 
 1. The first task should allow a Fahrenheit temperature to be passed in, it will convert that value to Celsius, it will then save the reading to a database along with the time and conversion value, and return the value as Celsius
 
-2. The second task should allow a Celsius temperature reading to be passed in, it will convert that value to Fahrenheit, it will then save the reading to a database along with the time and conversion value, and return the value as Celsius
+2. The second task should allow a Celsius temperature reading to be passed in, it will convert that value to Fahrenheit, it will then save the reading to a database along with the time and conversion value, and return the value as Fahrenheit
 
 ## Acceptance Criteria:
 
