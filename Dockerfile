@@ -2,9 +2,6 @@ FROM public.ecr.aws/docker/library/node:18-alpine3.15
 
 WORKDIR /app
 
-# Add Redis CLI for debugging connectivity between containers
-RUN apk --update add redis
-
 # Install dependencies first
 COPY ./package.json ./
 COPY ./tsconfig.json ./
@@ -16,5 +13,5 @@ COPY ./ .
 # Expose Ports
 EXPOSE 3000
 
-# Run entry command through doppler proxy.
+# Run entry command 
 CMD ["npm", "run", "start:dev"]
